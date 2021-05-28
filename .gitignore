@@ -1,0 +1,9 @@
+projects/migrations/__pycache__/0001_initial.cpython-38.pyc
+.coverage
+venv
+htmlcov
+blog/__pycache__
+blog/migrations
+personal_portafolio/__pycache__
+projects/__pycache__
+users/__pycache__
