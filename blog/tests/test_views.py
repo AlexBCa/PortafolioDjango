@@ -18,6 +18,8 @@ class TestViews(TestCase):
         self.blog_category_url = reverse('blog_category', args=['Django'])
         self.blog_detail_view_url = reverse('blog_detail', args=[1])
         self.blog_BlogInterestFromView_url = reverse('blog_detail', args=[1])
+        self.blog_viewStaff_url = reverse('staff')
+        self.blog_viewPrivate_url = reverse('private')
 
         
         # Creamos una entrada en el blog 
@@ -130,7 +132,49 @@ class TestViews(TestCase):
         self.assertEquals(type(response.context['view']), type(BlogInterestFromView()) )
         
 
+    def test_ViewStaff_is_staff(self):
+        
+        # Iniciamos como superusuario.
+        self.user = User.objects.create_superuser('myuser', 'myemail@test.com', 'mypassword')
+        
+        self.client.force_login(self.user)
+
+        response = self.client.get(self.blog_viewStaff_url)
+        
+        self.assertEqual(response.status_code, 200)
+
+
+    def test_ViewStaff_not_staff(self):
+        
+        
+        self.user = User.objects.create_user('myuser')
+        
+        self.client.force_login(self.user)
+
+        response = self.client.get(self.blog_viewStaff_url)
+        
+        self.assertEqual(response.status_code, 302)
     
+    def test_privada_is_login(self):
+        
+        
+        self.user = User.objects.create_user('myuser', 'myemail@test.com', 'mypassword')
+        
+        self.client.force_login(self.user)
+
+        response = self.client.get(self.blog_viewPrivate_url)
+        
+        self.assertEqual(response.status_code, 200)
+
+    def test_privada_not_login(self):
+
+        response = self.client.get(self.blog_viewPrivate_url)
+        
+        self.assertEqual(response.status_code, 302)
+
+
+
+
 
 
 
