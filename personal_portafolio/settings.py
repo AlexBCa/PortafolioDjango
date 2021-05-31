@@ -149,3 +149,15 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_USE_TLS = True
+
+### Configuración de archivos staticos ###
+# Declaramos la carpeta en la que django buscará los archivos staticos.
+STATIC_URL = '/static/'
+
+# Indicamos donde debe buscar los archivos staticos cuando no esten vinculados a ningun aplicación.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+# Lugar donde se guardarán los archivos estaticos al usar collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

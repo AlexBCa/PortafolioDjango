@@ -8,6 +8,8 @@ from django.urls import reverse
 class DashboardView(TemplateView):
     template_name = 'users/dashboard.html'
 
+
+# Crea una vista con un formulario a partir de un form
 class Registrer(CreateView):
 
     template_name = 'users/register.html'

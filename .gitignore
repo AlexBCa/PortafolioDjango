@@ -7,3 +7,5 @@ blog/migrations
 personal_portafolio/__pycache__
 projects/__pycache__
 users/__pycache__
+staticfiles
+
